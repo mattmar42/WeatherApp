@@ -42,6 +42,9 @@ body {
     border: 5px solid #FFFAFA;
     border-radius: 10px;
     font-size: 1.2em; }
+    body button#newButton {
+      width: 200px;
+      margin-top: 5%; }
     body button:hover {
       background-color: #FFFAFA;
       color: #242424;

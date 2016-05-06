@@ -55,6 +55,10 @@ button {
 	border: 5px solid $snowWhite;
 	border-radius: 10px;
 	font-size: 1.2em;
+	&#newButton {
+		width: 200px;
+		margin-top: 5%;
+	}
 	&:hover {
 		background-color: $snowWhite;
 		color: darken($snow, 40%);

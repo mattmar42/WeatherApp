@@ -1,5 +1,13 @@
 $(document).ready(function(){
 $('#weather').toggle();
+$('#newButton').toggle();
+
+$('#newButton').click(function(){
+  $('#newButton').toggle();
+  $('#weather').hide();
+  $('#weatherForm').show();
+  $('#input').val('');
+});
 
 $('form').submit(function(evt){
   evt.preventDefault();
@@ -10,18 +18,19 @@ $('form').submit(function(evt){
     success : function(parsed_json) {
     var forecast = '<p>';
     var locCountry = parsed_json['location']['country'];
-    var locState = parsed_json['location']['state'];
     var locCity = parsed_json['location']['city'];
-    var locZip = parsed_json['location']['zip'];
     var locTempF = parsed_json['current_observation']['temp_f'];
     var locTempC = parsed_json['current_observation']['temp_c'];
-    forecast += 'The current temperature in ' + locCity + ', ' +locCountry + ', ' + ' is: ' + locTempF + ' fahrenheit/' + locTempC + ' celsius.';
+    forecast += 'The current temperature in ' + locCity + ', ' +locCountry + ', ' + ' is: ' + locTempF + ' fahrenheit/' + locTempC + ' celsius. </p>';
     $('#instructions').toggle();
+    $('#weatherForm').toggle();
     $('#weather').toggle().html(forecast);
+    $('#newButton').toggle();
     }
 
+
         });//AJAX ends
-}); //onclick function ends
+}); //form submit function ends
 }); //documentready ends
 
 
