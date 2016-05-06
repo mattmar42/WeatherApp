@@ -3,9 +3,10 @@ $('#weather').toggle();
 $('#newButton').toggle();
 
 $('#newButton').click(function(){
-  $('#newButton').toggle();
+  $('#newButton').toggle
   $('#weather').hide();
   $('#weatherForm').show();
+  $('#instructions').toggle();
   $('#input').val('');
 });
 
@@ -13,7 +14,7 @@ $('form').submit(function(evt){
   evt.preventDefault();
   var desiredLoc = $('#input').val();
   $.ajax({
-    url :     "http://api.wunderground.com/api/cc7d882dc6080fa3/geolookup/conditions/q/" + desiredLoc + ".json",
+    url : "http://api.wunderground.com/api/cc7d882dc6080fa3/geolookup/conditions/q/" + desiredLoc + ".json",
     dataType : "jsonp",
     success : function(parsed_json) {
     var forecast = '<p>';
@@ -21,15 +22,18 @@ $('form').submit(function(evt){
     var locCity = parsed_json['location']['city'];
     var locTempF = parsed_json['current_observation']['temp_f'];
     var locTempC = parsed_json['current_observation']['temp_c'];
-    forecast += 'The current temperature in ' + locCity + ', ' +locCountry + ', ' + ' is: ' + locTempF + ' fahrenheit/' + locTempC + ' celsius. </p>';
+    var forecastText = parsed_json['current_observation']['weather'];
+    forecast += 'The current temperature in ' + locCity + ', ' +locCountry + ', ' + ' is: <br>' + locTempF + ' degrees fahrenheit/' + locTempC + 'celsius. <br><br>' + forecastText + '.</p>';
     $('#instructions').toggle();
     $('#weatherForm').toggle();
     $('#weather').toggle().html(forecast);
     $('#newButton').toggle();
-    }
+  }
+
 
 
         });//AJAX ends
+
 }); //form submit function ends
 }); //documentready ends
 
