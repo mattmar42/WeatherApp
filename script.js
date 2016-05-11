@@ -1,13 +1,13 @@
 $(document).ready(function(){
 $('#weather').toggle();
-$('#newButton').toggle();
+$('#newButton').hide();
 
 $('#newButton').click(function(){
-  $('#newButton').toggle
   $('#weather').hide();
   $('#weatherForm').show();
   $('#instructions').toggle();
   $('#input').val('');
+  $('#newButton').hide();
 });
 
 $('form').submit(function(evt){
@@ -27,7 +27,7 @@ $('form').submit(function(evt){
     $('#instructions').toggle();
     $('#weatherForm').toggle();
     $('#weather').toggle().html(forecast);
-    $('#newButton').toggle();
+    $('#newButton').show();
   }
 
 
